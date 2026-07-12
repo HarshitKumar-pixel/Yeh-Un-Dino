@@ -15,7 +15,7 @@ const SEARCH_MESSAGES = [
 ];
 const LOADING_DURATION = 5000; // ms
 const HANDOFF_DELAY = 1500; // ms — pause on "Memory Found." before entering chat
-const socket = io("http://localhost:3001");
+const socket = io("https://yeh-un-dino.onrender.com");
 
 const NOSTALGIA_PROMPTS = [
   "Remember rushing home to watch your favourite cartoon?",
@@ -321,7 +321,7 @@ function ChatScreen({ year, roomId, memoryMatch, onCloseDiary }) {
   const [messages, setMessages] = useState([]);
   const [prompt, setPrompt] = useState(
   NOSTALGIA_PROMPTS[Math.floor(Math.random() * NOSTALGIA_PROMPTS.length)]
-);
+);  
   const [draft, setDraft] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const scrollRef = useRef(null);
