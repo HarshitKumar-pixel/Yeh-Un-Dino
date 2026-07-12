@@ -1,29 +1,28 @@
-const express = require('express');
-const http = require('http');
-const cors = require('cors');
-const { Server } = require('socket.io');
+const express = require("express");
+const http = require("http");
+const cors = require("cors");
+const { Server } = require("socket.io");
 
 const app = express();
+const server = http.createServer(app);
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://yeh-un-dino.vercel.app"
+];
 
 app.use(cors({
-  origin: [
-  "http://localhost:5173",
-  "https://your-vercel-url.vercel.app"
-]
+  origin: allowedOrigins,
+  credentials: true
 }));
-
-const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: [
-  "http://localhost:5173",
-  "https://your-vercel-url.vercel.app"
-]
+    origin: allowedOrigins,
+    methods: ["GET", "POST"],
+    credentials: true
   }
 });
-
-let waitingUser = null;
 const prompts = [
   "Remember rushing home to watch your favourite cartoon?",
   "Remember buying games on CDs?",
