@@ -23,6 +23,7 @@ const io = new Server(server, {
     credentials: true
   }
 });
+let waitingUser = null;
 const prompts = [
   "Remember rushing home to watch your favourite cartoon?",
   "Remember buying games on CDs?",
@@ -100,7 +101,7 @@ socket.on("leaveRoom", ({ roomId }) => {
   });
 });
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
